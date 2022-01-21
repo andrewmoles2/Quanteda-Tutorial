@@ -1,0 +1,8 @@
+install.packages("tidyverse")
+install.packages("quanteda")
+install.packages("learnr")
+install.packages("gradethis")
+install.packages("readtext")
+install.packages("quanteda.textplots")
+install.packages("quanteda.textstats")
+install.packages("fs")
