@@ -1,4 +1,4 @@
-install.packages("tidyverse")
+install.packages("magrittr")
 install.packages("quanteda")
 install.packages("learnr")
 install.packages("remotes")
