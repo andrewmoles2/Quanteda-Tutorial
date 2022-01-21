@@ -8,7 +8,7 @@ runtime: shiny_prerendered
 library("learnr")
 library("gradethis")
 #library("magrittr")
-#library("quanteda")
+library("quanteda")
 #library("readtext")
 #library("quanteda.textplots")
 #library("quanteda.textstats")
