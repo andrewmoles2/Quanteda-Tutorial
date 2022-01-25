@@ -488,7 +488,7 @@ packageVersion("quanteda.textstats")
 ```
 Once you have constructed your dfm, adjusted stopwords, stemming and punctuation features and specified the meta-data you need using docnames, meta and docvars, you are now ready to perform some descriptive analysis on the dataset. One first step is to summarise the top features in your dfm. You can simply summarise the column counts in your dfm using `colSums()`, which counts the features, sorts them (decreasing or otherwise) and prints them. You can use `head()`, as below, to print on the top 6 features. <br>
 Alternatively, **quanteda** also has a built-in features frequency function `textstat_frequency()`, which allows you to specify the number of features using `n = x`. Try out the two options below.
-```{r vis, exercise=TRUE}
+```{r vis, exercise=TRUE, warning=FALSE}
 # create your dfm object from data_corpus_inaugural
 my_dfm <- tokens(data_corpus_inaugural, remove_punct = TRUE) %>%
   tokens_remove(stopwords("en")) %>%
@@ -517,7 +517,7 @@ packageVersion("ggplot2")
 #### Frequency plots
 Now you have a sense of what the main recurring features are in the dfm, you can visualise these in a texplot.<br>
 **Note: this is a [ggplot](https://ggplot2.tidyverse.org/index.html) object, which means you can modify the plot features using ggplot functions.**
-```{r vis3, exercise=TRUE}
+```{r vis3, exercise=TRUE, warning=FALSE}
 # create your dfm object from data_corpus_inaugural
 my_dfm <- tokens(data_corpus_inaugural, remove_punct = TRUE) %>%
   tokens_remove(stopwords("en")) %>%
@@ -536,7 +536,7 @@ ggplot(features_dfm_inaug, aes(x = feature, y = frequency)) +
 
 #### Wordclouds
 A second method you can use to visualise your dfm is wordclouds, which allow you to plot the top features.
-```{r vis4, exercise=TRUE}
+```{r vis4, exercise=TRUE, warning=FALSE}
 # create your dfm object from data_corpus_inaugural
 my_dfm <- tokens(data_corpus_inaugural, remove_punct = TRUE) %>%
   tokens_remove(stopwords("en")) %>%
@@ -567,7 +567,7 @@ Now you have had a look at some keywords in context, you can plot them on a lexc
 ##### Practice
 
 _Exercise: <br> 1. Fill in the "..." space to choose a keyword you are interested in, remember you can use **stem words** followed by an asterisk (this will include all words derived form that stem) <br> 2. Add another kwic() object, and specify another word of your choice._
-```{r visb, exercise=TRUE}
+```{r visb, exercise=TRUE, warning=FALSE}
 # create your tokens object from data_corpus_inaugural
 data_corpus_inaugural_subset <- 
     corpus_subset(data_corpus_inaugural, Year > 1949)
