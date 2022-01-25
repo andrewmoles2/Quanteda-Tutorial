@@ -1,4 +1,5 @@
 install.packages("magrittr")
+install.packages("ggplot2")
 install.packages("quanteda")
 install.packages("learnr")
 install.packages("remotes")

@@ -5,17 +5,15 @@ runtime: shiny_prerendered
 ---
 
 ```{r setup, include=FALSE}
-library("learnr")
-library("gradethis")
-#library("magrittr")
-library("quanteda")
-#library("readtext")
-#library("quanteda.textplots")
-#library("quanteda.textstats")
+library(learnr)
+library(gradethis)
+library(quanteda)
+library(magrittr)
+library(ggplot2)
+library(quanteda.textplots)
 
 tutorial_options(exercise.timelimit = 60)
 knitr::opts_chunk$set(echo = FALSE)
-
 
 # set CRAN repo for install.packages 
 r = getOption("repos")
@@ -39,7 +37,6 @@ h2 {text-align: center;}
 ## _
 
 <p style="text-align:center;"><img src="images/title_image.png" alt="Logo"></p>
-
 
 
 ## Welcome to Quanteda Tutorial 1
@@ -81,27 +78,17 @@ Text analysis with quanteda goes through all those three types of objects either
 
 ### Typical workflow 
 
-<p style="text-align:center;"><img src="images/workflow.png" alt="Logo"></p>
+<p style="text-align:center;"><img src="/Users/sarenkaluxmoore/Dropbox/Spring/DSL_DSI/Courseware_Developer/quanteda_draft2/images/workflow.png" alt="Logo"></p>
 
-### Installing **quanteda**
-Install the **quanteda** package from [CRAN](https://cran.r-project.org/package=quanteda):
+### Installing and loading **quanteda**
 
-```{r install_quanteda, exercise=TRUE, warning = FALSE}
-install.packages("quanteda")
-```
+In this tutorial we have already installed the **quanteda** package for you. When using **quanteda** from your own computer you can install the **quanteda** package from [CRAN](https://cran.r-project.org/package=quanteda) with: `install.packages("quanteda")`. 
 
-Also install the **readtext** package: ** what is readtext??
-```{r install_readtext, exercise=TRUE, warning = FALSE}
-install.packages("readtext")
-```
-
-Afterwards, load both packages:
+After installation we load the **quanteda** package:
 **Remember to reload the packages each time you open this tutorial**
 ```{r load_packages, exercise=TRUE, exercise.lines = 5}
 library("quanteda")
-library("readtext")
 packageVersion("quanteda")
-packageVersion("readtext")
 ```
 
 ### Additional resources
@@ -215,19 +202,19 @@ Tokens are a sequence of characters that are grouped together as a useful semant
 
 1. **Lowercase**
     - "a corpus is a set of documents."
-    - "this is the second document in the corpus."
+    - "This is a thrillingly constructed example."
 
 2. **Remove stopwords and punctuation**
-    - "a corpus is a set of documents."
-    - "this is the second document in the corpus."
+    - "corpus set documents"
+    - "thrillingly constructed example"
   
 3. **Stem**
-    - "corpus set documents"
-    - "second document corpus"
+    - "corpus set document"
+    - "thrill construct exampl"
     
 4. **Tokenize**
     - corpus, set, document
-    - second, document, corpus
+    - thrill, construct, exampl
 
 ### What are the functions?
 The main function for creating a corpus is `tokens()`. 
@@ -271,7 +258,8 @@ head(toks_nostop)
   _b) "This is not my first text, this is my second text."_ <br>
 2. Tokenise it using`tokens(corp)`.<br>
 3. Remove punctuation using 'remove_punct = FALSE'<br>
-4. Have a look at your tokens using `head()`<br>
+4. Remove stopwords using `tokens_remove()` <br>
+5. Have a look at your tokens using `head()`<br>
 
 ```{r toks_exx, exercise=TRUE}
 corp <- 
@@ -296,7 +284,14 @@ question("How many tokens in each text if you specify remove_punct = TRUE?",
   incorrect = "Incorrect. There should be 5 tokens in the first text, and 11 in the second. The number of tokens goes down, because punctuation tokens are removed.")
 ```
 
-**Removing stop words example and MCQ**
+```{r toks_qu3, echo=FALSE}
+question("How many tokens in each text once you remove stopwords and punctuation?",
+  answer("3, 5"),
+  answer("4, 4"),
+  answer("3, 3", correct = TRUE),
+  answer("6, 13"),
+  incorrect = "Incorrect. There should be 3 tokens in the first text, and 3 in the second. The number of tokens goes down, because stopwords and punctuation tokens are removed.")
+```
 
 ### Extra corpus functions
 Some extra parameters when tokenising your corpus include
@@ -567,16 +562,18 @@ head(kw_immig, 10)
 ```
 
 Now you have had a look at some keywords in context, you can plot them on a lexcial dispersion plot. In this case, we first subset the corpus so that we see the keywords in context for inaugural Presidential speeches from 1949 onwards only.<br>
-_Exercise: fill in the "..." spaces to choose the keywords you are interested in, remember you can use **stem words** followed by an asterisk (this will include all words derived form that stem)_
+
+##### Practice
+
+_Exercise: <br> 1. Fill in the "..." space to choose a keyword you are interested in, remember you can use **stem words** followed by an asterisk (this will include all words derived form that stem) <br> 2. Add another kwic() object, and specify another word of your choice._
 ```{r visb, exercise=TRUE}
 # create your tokens object from data_corpus_inaugural
 data_corpus_inaugural_subset <- 
     corpus_subset(data_corpus_inaugural, Year > 1949)
 
 textplot_xray(
-     kwic(tokens(data_corpus_inaugural_subset), pattern = "immig*"),
-     kwic(tokens(data_corpus_inaugural_subset), pattern = "god"),
-     kwic(tokens(data_corpus_inaugural_subset), pattern = "people")
+     kwic(tokens(data_corpus_inaugural_subset), pattern = "God"),
+     kwic(tokens(data_corpus_inaugural_subset), pattern = "...")
 )
 ```
 Notice anything interesting about the lexical dispersion of the word 'God'...?
@@ -657,8 +654,8 @@ Your task will be use German Chancellor Speeches to see how many times different
 
 #### 6. Now have a look at your textplot!
 
-```{r project, exercise=TRUE, exercise.lines = 5}
-
+```{r project, exercise=TRUE, exercise.lines = 1}
+# Click hint above to get some help (click on to see the solution if you get really stuck)
 ```
 
 ```{r project-hint}
@@ -684,7 +681,7 @@ plot_xray <- textplot_xray(
 # Now have a look at your textplot
 ```
 
-```{r project-solution, exercise=FALSE, exercise.reveal_solution = FALSE}
+```{r project-solution, exercise=FALSE, exercise.reveal_solution = TRUE}
 # Edit docnames
 docnames(data_corpus_inaugural_ger) <- paste(
     docvars(data_corpus_inaugural_ger, "Year"),
@@ -720,7 +717,7 @@ grade_code()
 #### For more on analysis, see the Quanteda 102 tutorial.
 
 ## Congratulations! You've completed Tutorial 1: Quanteda!
-<p style="text-align:center;"><img src="images/quanteda.png" alt="Logo"></p>
+<p style="text-align:center;"><img src="/Users/sarenkaluxmoore/Dropbox/Spring/DSL_DSI/Courseware_Developer/quanteda_draft2/images/quanteda.png" alt="Logo"></p>
 
 ### Let us know what you thought about the tutorial, we'd love to hear your thoughts!
 * Text box that automatically deposits responses in certain location?
