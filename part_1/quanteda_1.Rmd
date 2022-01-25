@@ -78,7 +78,7 @@ Text analysis with quanteda goes through all those three types of objects either
 
 ### Typical workflow 
 
-<p style="text-align:center;"><img src="/Users/sarenkaluxmoore/Dropbox/Spring/DSL_DSI/Courseware_Developer/quanteda_draft2/images/workflow.png" alt="Logo"></p>
+<p style="text-align:center;"><img src="images/workflow.png" alt="Logo"></p>
 
 ### Installing and loading **quanteda**
 
@@ -717,7 +717,7 @@ grade_code()
 #### For more on analysis, see the Quanteda 102 tutorial.
 
 ## Congratulations! You've completed Tutorial 1: Quanteda!
-<p style="text-align:center;"><img src="/Users/sarenkaluxmoore/Dropbox/Spring/DSL_DSI/Courseware_Developer/quanteda_draft2/images/quanteda.png" alt="Logo"></p>
+<p style="text-align:center;"><img src="images/quanteda.png" alt="Logo"></p>
 
 ### Let us know what you thought about the tutorial, we'd love to hear your thoughts!
 * Text box that automatically deposits responses in certain location?
