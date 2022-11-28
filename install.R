@@ -1,5 +1,5 @@
-install.packages("magrittr")
-install.packages("ggplot2")
+install.packages("tidyverse")
+install.packages("rmarkdown")
 install.packages("quanteda")
 install.packages("learnr")
 install.packages("remotes")
