@@ -1,5 +1,7 @@
 install.packages("tidyverse")
 install.packages("rmarkdown")
+install.packages("knitr")
+install.packages("markdown")
 install.packages("quanteda")
 install.packages("learnr")
 install.packages("remotes")
