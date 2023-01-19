@@ -194,7 +194,7 @@ In what context were "God" and "God bless" used in US presidential inaugural spe
 
 *Note the `textplot_xray()` shows us the relative position of the keyword or phrase in the inaugural speeches*
 
-```{r kwic5, exercise=TRUE, exercise.lines=12, fig.height=5}
+```{r kwic5, exercise=TRUE, exercise.lines=12, fig.height=6}
 data_tokens_inaugural <- tokens(data_corpus_inaugural)
 
 kw_god <-
@@ -213,7 +213,7 @@ kw_god <- tokens_subset(data_tokens_inaugural, Year > 1970) %>%
 kwic(pattern = phrase("god bless"), window = 3)
 ```
 
-```{r kwic5-solution, exercise.reveal_solution = TRUE, fig.height=5}
+```{r kwic5-solution, exercise.reveal_solution = TRUE, fig.height=6}
 data_tokens_inaugural <- tokens(data_corpus_inaugural)
 
 kw_god <- tokens_subset(data_tokens_inaugural, Year > 1970) %>%
@@ -268,7 +268,7 @@ textstat_frequency(ire_dfm, n = 15)
 
 A fun way to visualise frequency textual data is using wordclouds. We can use the `textplot_wordcloud()` function from the `quanteda.textplots` library to make a word cloud from our ire_dfm.
 
-```{r kwic6_5, exercise=TRUE, fig.height=5}
+```{r kwic6_5, exercise=TRUE, fig.height=6}
 library("quanteda.textplots")
 
 ire_dfm <- tokens(data_corpus_irishbudget2010, 
@@ -373,7 +373,7 @@ ire_freqplot <- ire_dfm %>%
 ire_freqplot
 ```
 
-```{r kwic8-solution, fig.height=5}
+```{r kwic8-solution, fig.height=6}
 library("ggplot2")
 data(data_corpus_irishbudget2010, package = "quanteda.textmodels")
 ire_dfm <- tokens(data_corpus_irishbudget2010, 
@@ -422,7 +422,7 @@ ire_dfm %>%
              y = frequency)) +
   geom_point(size = 8.5) +
   geom_linerange(aes(x = feature, ymin = 104, ymax = frequency),
-                 linewidth = 1.2, lineend = "round") +
+                 size = 1.2, lineend = "round") +
   geom_text(aes(label = frequency), 
             colour = "white") +
   coord_flip() +
@@ -610,7 +610,7 @@ If we review the other two measures we used, CTTR and D, the lexical diversity s
 
 *run the code to view the figures*
 
-```{r lexdev2, exercise=TRUE, exercise.setup = "prep-ire", fig.height=5}
+```{r lexdev2, exercise=TRUE, exercise.setup = "prep-ire", fig.height=7}
 tplot_cttr <- ggplot(df_lexdiv, aes(
   x = reorder(document, CTTR),
   y = CTTR, colour = n_tokens)) + 
@@ -673,7 +673,7 @@ For this exercise we will look at the readability of presidential inaugural spee
 4) Add the title: *Readability of inaugural speeches since 1945*
 5) Add the subtitle: *Higher score means text is more readable* 
 
-```{r read2, exercise=TRUE, fig.height=5}
+```{r read2, exercise=TRUE, fig.height=7}
 tstat_read_subset <- data_corpus_inaugural %>%
     corpus_() %>% 
     textstat_()
@@ -740,21 +740,21 @@ tstat_read_subset <- data_corpus_inaugural %>%
 
 We can improve on the visual we made to make it more readable by adding a few features. This includes adding the average as a line, and adding various text elements. 
 
-```{r read3, exercise=TRUE, exercise.setup = "prep-read", fig.height=6, fig.width=8.85,  exercise.lines=22}
+```{r read3, exercise=TRUE, exercise.setup = "prep-read", fig.height=7, fig.width=9.5,  exercise.lines=22}
 avg_readability <- mean(tstat_read_subset$Flesch)
 ggplot(tstat_read_subset, 
        aes(x = document, y = Flesch)) +
   geom_point(size = 9) +
   geom_hline(yintercept = avg_readability,
-             alpha = 0.75, linetype = 5, linewidth = 1.2) +
+             alpha = 0.75, linetype = 5, size = 1.2) +
   geom_segment(aes(xend = document, yend = avg_readability),
-               linetype = 3, linewidth = 1.2) +
+               linetype = 3, size = 1.2) +
   geom_text(aes(label = round(Flesch, 1)), 
             colour = "white", size = 3.5, family = "Avenir") +
   geom_text(aes(x = "2005-Bush", y = 69), 
             family = "Avenir", fontface = "italic", size = 4.5,
             label = paste0("Average readability: ", round(avg_readability,2))) +
-  geom_curve(aes(x = "2005-Bush", y = 65.4, 
+  geom_curve(aes(x = "2005-Bush", y = 65.4, alpha = 0.6,
                  xend = "2005-Bush", yend = avg_readability+0.4),
              curvature = -0.25, arrow = arrow()) +
   coord_flip() +
@@ -799,7 +799,7 @@ Some of the code has been provided for you.
 4) Analyse the keyness with a target of Brexit. Make sure to plot the keyness result. 
 5) Analyse the lexical diversity using *TTR*, *CTTR* and *D* measures. 
 
-```{r textstatwrap, exercise=TRUE, exercise.lines=32, fig.height=6}
+```{r textstatwrap, exercise=TRUE, exercise.lines=32, fig.height=7}
 data_corpus_guardian <- quanteda.corpora::download('data_corpus_guardian')
 
 kw_brexit <- data_corpus_guardian %>%
@@ -1560,7 +1560,7 @@ ire_budg_dist <- textstat_dist(ire_budg_dfm)
 ```
 
 We can use our distance calculations now for clustering using the `hclust()` function which is from the `stats` package. 
-```{r dist2, exercise=TRUE, exercise.setup = "prep-dist2", fig.height=6, fig.width=8}
+```{r dist2, exercise=TRUE, exercise.setup = "prep-dist2", fig.height=7, fig.width=8}
 # hierarchical clustering the distance object
 ire_budg_cluster <- hclust(as.dist(ire_budg_dist))
 
@@ -1582,7 +1582,7 @@ Using *data_corpus_sotu* we will perform hierarchical clustering of State of the
 4. Add document labels to your hierarchical cluster object.
 5. Plot your hierarchical cluster object, making sure to add a title (`main`) and subtitle (`sub`).
 
-```{r dist3, exercise=TRUE, exercise.lines=24, fig.height=6, fig.width=8}
+```{r dist3, exercise=TRUE, exercise.lines=24, fig.height=7, fig.width=8}
 # Get State of the Union addresses
 data_corpus_sotu <- readRDS(url("https://quanteda.org/data/data_corpus_sotu.rds"))
 # Prepare dfm and trim the terms and doc freq
