@@ -754,9 +754,9 @@ ggplot(tstat_read_subset,
   geom_text(aes(x = "2005-Bush", y = 69), 
             family = "Avenir", fontface = "italic", size = 4.5,
             label = paste0("Average readability: ", round(avg_readability,2))) +
-  geom_curve(aes(x = "2005-Bush", y = 65.4, alpha = 0.6,
+  geom_curve(aes(x = "2005-Bush", y = 65,
                  xend = "2005-Bush", yend = avg_readability+0.4),
-             curvature = -0.25, arrow = arrow()) +
+             curvature = -0.25, arrow = arrow(), alpha = 0.6) +
   coord_flip() +
     labs(x = NULL, y = "Readability (Flesch)",
          title = "Readability of inaugural speeches since 1945",
