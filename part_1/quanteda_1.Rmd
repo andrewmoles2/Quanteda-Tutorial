@@ -1,17 +1,17 @@
 ---
-title: "Tutorial"
+title: "Quanteda Tutorial - Part 1"
 output: learnr::tutorial
 runtime: shiny_prerendered
 ---
 
 ```{r setup, include=FALSE}
-library(learnr)
-library(gradethis)
-library(quanteda)
-library(magrittr)
-library(ggplot2)
-library(quanteda.textplots)
-library(quanteda.textstats)
+library("learnr")
+library("gradethis")
+library("quanteda")
+library("magrittr")
+library("ggplot2")
+library("quanteda.textplots")
+library("quanteda.textstats")
 
 tutorial_options(exercise.timelimit = 60)
 knitr::opts_chunk$set(echo = FALSE)
@@ -487,7 +487,8 @@ library("quanteda.textstats")
 packageVersion("quanteda.textstats")
 ```
 Once you have constructed your dfm, adjusted stopwords, stemming and punctuation features and specified the meta-data you need using docnames, meta and docvars, you are now ready to perform some descriptive analysis on the dataset. One first step is to summarise the top features in your dfm. You can simply summarise the column counts in your dfm using `colSums()`, which counts the features, sorts them (decreasing or otherwise) and prints them. You can use `head()`, as below, to print on the top 6 features. <br>
-Alternatively, **quanteda** also has a built-in features frequency function `textstat_frequency()`, which allows you to specify the number of features using `n = x`. Try out the two options below.
+Alternatively, **quanteda** also has a built-in features frequency function `textstat_frequency()`, which allows you to specify the number of features using `n = x`. Try out the two options below. <br>
+Finally, the simplest solution is to use the `topfeatures()` function from `Quanteda`. 
 ```{r vis, exercise=TRUE, warning=FALSE}
 # create your dfm object from data_corpus_inaugural
 my_dfm <- tokens(data_corpus_inaugural, remove_punct = TRUE) %>%
@@ -501,8 +502,10 @@ colSums(my_dfm) %>%
     head(n = 6)
 # using quanteda textstat_frequency
 textstat_frequency(my_dfm, n = 6)
+# using topFeatures
+topfeatures(my_dfm, n = 6)
 ```
-Now you have a sense of what the main recurring features are in the dfm, you might want to have a look at how these features are distributed accross the different Presidents' speeches.
+Now you have a sense of what the main recurring features are in the dfm, you might want to have a look at how these features are distributed across the different Presidents' speeches.
 
 ### Texplots
 Start by loading the **quanteda.textplots** and **ggplot2** packages <br> 

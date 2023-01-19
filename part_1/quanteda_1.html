@@ -14,7 +14,7 @@
 <meta name="allow-skip" content="false" />
 <meta name="learnr-version-prerender" content="0.11.2" />
 
-<title>Tutorial</title>
+<title>Quanteda Tutorial - Part 1</title>
 
 <!-- header-includes START -->
 <!-- HEAD_CONTENT -->
@@ -823,7 +823,8 @@ them (decreasing or otherwise) and prints them. You can use
 Alternatively, <strong>quanteda</strong> also has a built-in features
 frequency function <code>textstat_frequency()</code>, which allows you
 to specify the number of features using <code>n = x</code>. Try out the
-two options below.
+two options below. <br> Finally, the simplest solution is to use the
+<code>topfeatures()</code> function from <code>Quanteda</code>.
 <div class="tutorial-exercise" data-label="vis" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code># create your dfm object from data_corpus_inaugural
@@ -837,12 +838,14 @@ colSums(my_dfm) %&gt;%
     sort(decreasing = TRUE) %&gt;%
     head(n = 6)
 # using quanteda textstat_frequency
-textstat_frequency(my_dfm, n = 6)</code></pre>
+textstat_frequency(my_dfm, n = 6)
+# using topFeatures
+topfeatures(my_dfm, n = 6)</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 <p>Now you have a sense of what the main recurring features are in the
 dfm, you might want to have a look at how these features are distributed
-accross the different Presidents’ speeches.</p>
+across the different Presidents’ speeches.</p>
 </div>
 <div id="section-texplots" class="section level3">
 <h3>Texplots</h3>
@@ -1196,13 +1199,13 @@ location?</li>
 </ul>
 <p>
 <script type="application/shiny-prerendered" data-context="server-start">
-library(learnr)
-library(gradethis)
-library(quanteda)
-library(magrittr)
-library(ggplot2)
-library(quanteda.textplots)
-library(quanteda.textstats)
+library("learnr")
+library("gradethis")
+library("quanteda")
+library("magrittr")
+library("ggplot2")
+library("quanteda.textplots")
+library("quanteda.textstats")
 
 tutorial_options(exercise.timelimit = 60)
 knitr::opts_chunk$set(echo = FALSE)
@@ -1242,9 +1245,9 @@ output$`tutorial-exercise-load_packages-output` <- renderUI({
 
 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "load_packages", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "load_packages", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
@@ -1287,9 +1290,9 @@ output$`tutorial-exercise-text_corpus1-output` <- renderUI({
 
 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "text_corpus1", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "text_corpus1", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
@@ -1331,9 +1334,9 @@ output$`tutorial-exercise-text_corpus-output` <- renderUI({
 
 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "text_corpus", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "text_corpus", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
@@ -1378,9 +1381,9 @@ output$`tutorial-exercise-text_corpus_ex-output` <- renderUI({
 
 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "text_corpus_ex", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "text_corpus_ex", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
@@ -1423,9 +1426,9 @@ output$`tutorial-exercise-meta-output` <- renderUI({
 
 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "meta", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "meta", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
@@ -1468,9 +1471,9 @@ output$`tutorial-exercise-meta2-output` <- renderUI({
 
 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "meta2", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "meta2", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
@@ -1513,9 +1516,9 @@ output$`tutorial-exercise-toks_ex-output` <- renderUI({
 
 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "toks_ex", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "toks_ex", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
@@ -1557,9 +1560,9 @@ output$`tutorial-exercise-toks_ex1-output` <- renderUI({
 
 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "toks_ex1", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "toks_ex1", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
@@ -1602,9 +1605,9 @@ output$`tutorial-exercise-toks_ex2-output` <- renderUI({
 
 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "toks_ex2", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "toks_ex2", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
@@ -1645,9 +1648,9 @@ output$`tutorial-exercise-toks_ex3-output` <- renderUI({
 
 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "toks_ex3", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "toks_ex3", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
@@ -1692,9 +1695,9 @@ output$`tutorial-exercise-toks_exx-output` <- renderUI({
 
 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "toks_exx", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "toks_exx", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
@@ -1729,16 +1732,16 @@ learnr:::store_exercise_cache(structure(list(label = "toks_exx", global_setup = 
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "toks_qu1", question = structure("How many tokens in each text?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_de2b2bd", 
+"character")), answers = list(structure(list(id = "lnr_ans_7344139", 
     option = "5, 5", value = "5, 5", label = structure("5, 5", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_cbe3a", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_38d3118", 
     option = "5, 11", value = "5, 11", label = structure("5, 11", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_e0f97ad", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_651eaab", 
     option = "6, 12", value = "6, 12", label = structure("6, 12", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_251cf8d", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_fe4e78c", 
     option = "6, 13", value = "6, 13", label = structure("6, 13", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
 "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1748,7 +1751,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Incorrect. Did you pay close attention to words and punctuation?", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "toks_qu1-answer", question = "toks_qu1"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = FALSE, seed = 448607480.291101, 
+    random_answer_order = FALSE, allow_retry = FALSE, seed = 777209832.138083, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -1756,16 +1759,16 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "toks_qu2", question = structure("How many tokens in each text if you specify remove_punct = TRUE?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_b84d8b5", 
+"character")), answers = list(structure(list(id = "lnr_ans_801ad05", 
     option = "5, 5", value = "5, 5", label = structure("5, 5", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_762faaa", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_bc5945", 
     option = "5, 11", value = "5, 11", label = structure("5, 11", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_a997a77", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_f92a19a", 
     option = "6, 12", value = "6, 12", label = structure("6, 12", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_24cbce1", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_6d9cfc1", 
     option = "6, 13", value = "6, 13", label = structure("6, 13", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
 "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1775,23 +1778,23 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Incorrect. There should be 5 tokens in the first text, and 11 in the second. The number of tokens goes down, because punctuation tokens are removed.", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "toks_qu2-answer", question = "toks_qu2"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = FALSE, seed = 1610208152.25019, 
+    random_answer_order = FALSE, allow_retry = FALSE, seed = 2018035326.06028, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "toks_qu3", question = structure("How many tokens in each text once you remove stopwords and punctuation?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_ef1cde1", 
+"character")), answers = list(structure(list(id = "lnr_ans_5b7152a", 
     option = "3, 5", value = "3, 5", label = structure("3, 5", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_59ac1e3", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_67f3c31", 
     option = "4, 4", value = "4, 4", label = structure("4, 4", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_cdfca56", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_7fb2c2a", 
     option = "3, 3", value = "3, 3", label = structure("3, 3", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_4f2cab", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_3f5f2b3", 
     option = "6, 13", value = "6, 13", label = structure("6, 13", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
 "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1801,7 +1804,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Incorrect. There should be 3 tokens in the first text, and 3 in the second. The number of tokens goes down, because stopwords and punctuation tokens are removed.", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "toks_qu3-answer", question = "toks_qu3"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = FALSE, seed = 1557835182.77458, 
+    random_answer_order = FALSE, allow_retry = FALSE, seed = 1684212442.21573, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -1815,9 +1818,9 @@ output$`tutorial-exercise-dfm_ex-output` <- renderUI({
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "dfm_ex", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "dfm_ex", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
@@ -1855,16 +1858,16 @@ learnr:::store_exercise_cache(structure(list(label = "dfm_ex", global_setup = st
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "dfm_qu1", question = structure("What is the length of dfm_immig?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_7e4775d", 
+"character")), answers = list(structure(list(id = "lnr_ans_d67a17c", 
     option = "1494", value = "1494", label = structure("1494", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_6022d0c", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_c8b560", 
     option = "0", value = "0", label = structure("0", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_5e5fa8d", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_a60a150", 
     option = "14940", value = "14940", label = structure("14940", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_b5236eb", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_f14eec3", 
     option = "15940", value = "15940", label = structure("15940", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
 "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1874,41 +1877,41 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Incorrect. Find the length of the dfm by running <code>summary(dfm_immig)<\u002fcode>", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "dfm_qu1-answer", question = "dfm_qu1"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = FALSE, seed = 1338199199.87685, 
+    random_answer_order = FALSE, allow_retry = FALSE, seed = 3936743.99816681, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "dfm_qu2", question = structure("Which one of the following is <strong>not<\u002fstrong> a docname in dfm_immig?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_a3e9e4a", 
+"character")), answers = list(structure(list(id = "lnr_ans_e27c05c", 
     option = "BNP", value = "BNP", label = structure("BNP", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_ce63a62", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_ac8d778", 
     option = "LibDem", value = "LibDem", label = structure("LibDem", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_a253644", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_b21bfe6", 
     option = "Greens", value = "Greens", label = structure("Greens", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_1ed6117", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_7501c2e", 
     option = "Conservative", value = "Conservative", label = structure("Conservative", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_b52d013", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_78b26cf", 
     option = "PC", value = "PC", label = structure("PC", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_122cd41", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_9f24943", 
     option = "TUC", value = "TUC", label = structure("TUC", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_29139b7", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_6f2a0d0", 
     option = "Coalition", value = "Coalition", label = structure("Coalition", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_e124a1c", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_f4e52f8", 
     option = "SNP", value = "SNP", label = structure("SNP", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_f3f0f6c", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_c3aa13b", 
     option = "Labour", value = "Labour", label = structure("Labour", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_119cbd5", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_a5a72f9", 
     option = "UKIP", value = "UKIP", label = structure("UKIP", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
 "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1918,7 +1921,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Incorrect. Find the docnames of the dfm by running <code>docnames(dfm_immig)<\u002fcode>", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "dfm_qu2-answer", question = "dfm_qu2"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = FALSE, seed = 1761694173.17965, 
+    random_answer_order = FALSE, allow_retry = FALSE, seed = 2058014968.54166, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -1932,9 +1935,9 @@ output$`tutorial-exercise-pipping-output` <- renderUI({
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "pipping", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "pipping", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
@@ -1976,9 +1979,9 @@ output$`tutorial-exercise-pipping2-output` <- renderUI({
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "pipping2", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "pipping2", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
@@ -2019,9 +2022,9 @@ output$`tutorial-exercise-pipping_ex-output` <- renderUI({
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "pipping_ex", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "pipping_ex", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
@@ -2066,9 +2069,9 @@ output$`tutorial-exercise-create_dfm_ex-output` <- renderUI({
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "create_dfm_ex", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "create_dfm_ex", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
@@ -2108,16 +2111,16 @@ learnr:::store_exercise_cache(structure(list(label = "create_dfm_ex", global_set
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "dfm_prac1", question = structure("What is the length of dfm_immig?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_f6cca5", 
+"character")), answers = list(structure(list(id = "lnr_ans_1c0aec2", 
     option = "325503", value = "325503", label = structure("325503", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_545b014", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_576ceca", 
     option = "32550", value = "32550", label = structure("32550", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_321e50b", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_44cbd75", 
     option = "32553", value = "32553", label = structure("32553", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_a0a15d6", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_22d0b60", 
     option = "1", value = "1", label = structure("1", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
 "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -2127,48 +2130,48 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Incorrect. Find the length of the dfm by running <code>summary(dfm_immig)<\u002fcode>", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "dfm_prac1-answer", question = "dfm_prac1"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = FALSE, seed = 1414605633.34127, 
+    random_answer_order = FALSE, allow_retry = FALSE, seed = 1401350764.34745, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "dfm_prac2", question = structure("Which year was John Adams’ innaugural speech, and which party was he representing?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_5040210", 
+"character")), answers = list(structure(list(id = "lnr_ans_827c554", 
     option = "Repulican, 1800", value = "Repulican, 1800", label = structure("Repulican, 1800", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_621ce9", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_18e54a4", 
     option = "Whig, 1789", value = "Whig, 1789", label = structure("Whig, 1789", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_ae3f5de", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_680aa3f", 
     option = "Democrat, 1910", value = "Democrat, 1910", label = structure("Democrat, 1910", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_5316111", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_227849a", 
     option = "Whig, 1809", value = "Whig, 1809", label = structure("Whig, 1809", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_4f9ad30", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_aabb405", 
     option = "Federalist, 1805", value = "Federalist, 1805", 
     label = structure("Federalist, 1805", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_2cbd6d6", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_af8e699", 
     option = "Republican, 1880", value = "Republican, 1880", 
     label = structure("Republican, 1880", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_2f4e386", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_e502141", 
     option = "Democrat, 1900", value = "Democrat, 1900", label = structure("Democrat, 1900", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_6d576b5", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_feea9d0", 
     option = "Whig, 1880", value = "Whig, 1880", label = structure("Whig, 1880", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_51c57", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_a6401e4", 
     option = "Federalist, 1797", value = "Federalist, 1797", 
     label = structure("Federalist, 1797", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_6eb46cc", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_c85c216", 
     option = "Democratic-Republican, 1910", value = "Democratic-Republican, 1910", 
     label = structure("Democratic-Republican, 1910", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_1e18385", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_48660f9", 
     option = "Whig, 1805", value = "Whig, 1805", label = structure("Whig, 1805", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
 "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -2178,7 +2181,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Incorrect. Find the docnames of the dfm by running <code>docvars(dfm_immig)<\u002fcode>", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "dfm_prac2-answer", question = "dfm_prac2"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = FALSE, seed = 1450743427.82445, 
+    random_answer_order = FALSE, allow_retry = FALSE, seed = 2106081962.01928, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -2192,9 +2195,9 @@ output$`tutorial-exercise-vis0-output` <- renderUI({
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "vis0", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "vis0", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
@@ -2236,14 +2239,14 @@ output$`tutorial-exercise-vis-output` <- renderUI({
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "vis", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "vis", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
 ), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "vis", code = "# create your dfm object from data_corpus_inaugural\nmy_dfm <- tokens(data_corpus_inaugural, remove_punct = TRUE) %>%\n  tokens_remove(stopwords(\"en\")) %>%\n  tokens_wordstem(language = \"en\") %>%\n  dfm()\n\n# using colSums\ncolSums(my_dfm) %>%\n    sort(decreasing = TRUE) %>%\n    head(n = 6)\n# using quanteda textstat_frequency\ntextstat_frequency(my_dfm, n = 6)", 
+    chunks = list(list(label = "vis", code = "# create your dfm object from data_corpus_inaugural\nmy_dfm <- tokens(data_corpus_inaugural, remove_punct = TRUE) %>%\n  tokens_remove(stopwords(\"en\")) %>%\n  tokens_wordstem(language = \"en\") %>%\n  dfm()\n\n# using colSums\ncolSums(my_dfm) %>%\n    sort(decreasing = TRUE) %>%\n    head(n = 6)\n# using quanteda textstat_frequency\ntextstat_frequency(my_dfm, n = 6)\n# using topFeatures\ntopfeatures(my_dfm, n = 6)", 
         opts = list(label = "\"vis\"", exercise = "TRUE", warning = "FALSE"), 
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = NULL, solution = NULL, tests = NULL, options = list(
@@ -2269,8 +2272,9 @@ learnr:::store_exercise_cache(structure(list(label = "vis", global_setup = struc
         "  tokens_remove(stopwords(\"en\")) %>%", "  tokens_wordstem(language = \"en\") %>%", 
         "  dfm()", "", "# using colSums", "colSums(my_dfm) %>%", 
         "    sort(decreasing = TRUE) %>%", "    head(n = 6)", 
-        "# using quanteda textstat_frequency", "textstat_frequency(my_dfm, n = 6)"
-        ), out.width.px = 624, out.height.px = 384, params.src = "vis, exercise=TRUE, warning=FALSE", 
+        "# using quanteda textstat_frequency", "textstat_frequency(my_dfm, n = 6)", 
+        "# using topFeatures", "topfeatures(my_dfm, n = 6)"), 
+        out.width.px = 624, out.height.px = 384, params.src = "vis, exercise=TRUE, warning=FALSE", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
@@ -2284,9 +2288,9 @@ output$`tutorial-exercise-vis2-output` <- renderUI({
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "vis2", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "vis2", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
@@ -2329,9 +2333,9 @@ output$`tutorial-exercise-vis3-output` <- renderUI({
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "vis3", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "vis3", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
@@ -2378,9 +2382,9 @@ output$`tutorial-exercise-vis4-output` <- renderUI({
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "vis4", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "vis4", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
@@ -2424,9 +2428,9 @@ output$`tutorial-exercise-visa-output` <- renderUI({
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "visa", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "visa", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
@@ -2471,9 +2475,9 @@ output$`tutorial-exercise-visb-output` <- renderUI({
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "visb", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "visb", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
@@ -2511,16 +2515,16 @@ learnr:::store_exercise_cache(structure(list(label = "visb", global_setup = stru
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "visprac", question = structure("Where in the inaugural speeches does the word ‘God’ consistently appear?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_33fe4a4", 
+"character")), answers = list(structure(list(id = "lnr_ans_35cedc3", 
     option = "the start", value = "the start", label = structure("the start", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_dcec283", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_aee0afe", 
     option = "the end", value = "the end", label = structure("the end", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_9fd1f76", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_a677581", 
     option = "nowhere", value = "nowhere", label = structure("nowhere", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_688d654", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_317f9d0", 
     option = "everywhere", value = "everywhere", label = structure("everywhere", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
 "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -2530,7 +2534,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Incorrect. Have a closer look. Notice that Presidents Eisenhow (in 1957), Kennedy, Johnson and Carter are the notable exceptions.", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "visprac-answer", question = "visprac"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = FALSE, seed = 1807223086.65845, 
+    random_answer_order = FALSE, allow_retry = FALSE, seed = 1541451951.78221, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -2544,9 +2548,9 @@ output$`tutorial-exercise-project-output` <- renderUI({
 
 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "project", global_setup = structure(c("library(learnr)", 
-"library(gradethis)", "library(quanteda)", "library(magrittr)", 
-"library(ggplot2)", "library(quanteda.textplots)", "library(quanteda.textstats)", 
+learnr:::store_exercise_cache(structure(list(label = "project", global_setup = structure(c("library(\"learnr\")", 
+"library(\"gradethis\")", "library(\"quanteda\")", "library(\"magrittr\")", 
+"library(\"ggplot2\")", "library(\"quanteda.textplots\")", "library(\"quanteda.textstats\")", 
 "", "tutorial_options(exercise.timelimit = 60)", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "# set CRAN repo for install.packages ", "r = getOption(\"repos\")", 
 "r[\"CRAN\"] = \"http://cran.us.r-project.org\"", "options(repos = r)"
@@ -2612,7 +2616,8 @@ learnr:::store_exercise_cache(structure(list(label = "project", global_setup = s
 
 <!-- begin doc-metadata -->
 <div id="doc-metadata">
-<h1 class="title toc-ignore" style="display:none;">Tutorial</h1>
+<h1 class="title toc-ignore" style="display:none;">Quanteda Tutorial -
+Part 1</h1>
 </div>
 <!-- end doc-metadata -->
 
